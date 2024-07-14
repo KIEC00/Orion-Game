@@ -10,9 +10,11 @@ public class GameBounds : MonoBehaviour, IGameBoundsChangeHandler
 
     public void OnGameBoundsChange(Rect bounds)
     {
-        bounds.size += Vector2.one* _offset;
+        var offset = Vector2.one * _offset;
+        bounds.size += offset;
+        bounds.position -= offset / 2;
         _bounds = bounds;
-        
+
         _collider.enabled = false;
         _collider.offset = bounds.center;
         _collider.size = bounds.size;
