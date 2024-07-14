@@ -7,9 +7,9 @@ public class DefaultCannon : AbstractCannon
     public override bool IsShooting => _coroutine != null;
 
     [SerializeField] private Projectile _projectile;
-    [SerializeField] private float _projectileDamage;
-    [SerializeField] private float _projectileVelocity;
-    [SerializeField] private float _shootDelay;
+    [SerializeField] private float _projectileDamage = 1;
+    [SerializeField] private float _projectileVelocity = 10;
+    [SerializeField] private float _shootDelay = 1;
     [SerializeField] private Transform _pivot;
 
     private Rigidbody2D _rigidbody;
