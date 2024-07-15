@@ -78,10 +78,6 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
         throw new Exception("Something went wrong at selecting target");
     }
 
-    private void Start()
-    {
-        Run();
-    }
     public void Run() => StartCoroutine(SpawnRoutine());
     public void OnFakeVelocityChange(float velocity) => _velocity = velocity;
     public void OnGameBoundsChange(Rect bounds)

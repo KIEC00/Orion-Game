@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc27521f96edef4e836c456d569e34d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 1049217385078789423, guid: fd029de6538759b4ebc74e0f68c16452, type: 3}
+  _projectile: {fileID: 1862114053524253783, guid: b87f1ffa42f98f647928b8d54154b7b4, type: 3}
   _projectileDamage: 1
   _projectileVelocity: 15
-  _shootDelay: 1
+  _shootDelay: 0.5
   _pivot: {fileID: 255241456379769213}

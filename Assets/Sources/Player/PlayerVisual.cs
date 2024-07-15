@@ -10,4 +10,10 @@ public class PlayerVisual : MonoBehaviour
         var power = (normalizedVelocity.x + 1) / 2;
         _engineFire.localScale = Vector2.Lerp(_engineFireMinimumScale, Vector2.one, power);
     }
+
+    public void Explode()
+    {
+        GetComponent<Animator>().enabled = true;
+        Destroy(_engineFire.gameObject);
+    }
 }

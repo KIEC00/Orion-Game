@@ -42,10 +42,9 @@ public class DefaultCannon : AbstractCannon
 
     private void Shoot()
     {
-        var launcherVelocity = _rigidbody.velocity;
-        launcherVelocity.x = MathF.Max(-_projectileVelocity / 2, launcherVelocity.x);
         var projectile = Instantiate(_projectile, _pivot.position, Quaternion.identity);
-        projectile.Init((Vector2)_pivot.right * _projectileVelocity + launcherVelocity, _projectileDamage);
+        var projectileVelocity = (Vector2)_pivot.right * _projectileVelocity;
+        projectile.Init(projectileVelocity, _projectileDamage);
     }
 
     private void Awake()

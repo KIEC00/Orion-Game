@@ -52,6 +52,12 @@ public class PlayerMovement : MonoBehaviour, IGameBoundsChangeHandler
         _bounds = bounds;
     }
 
+    public void Explode()
+    {
+        _rigidbody.simulated = false;
+        enabled = false;
+    }
+
     private void Awake()
     {
         _shipBounds.size = GetComponentInChildren<SpriteRenderer>().bounds.size;

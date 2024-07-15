@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Asteroid : MonoBehaviour, IDestroyable
 {
-    [SerializeField] protected float _damageScale;
+    [SerializeField] protected float _damage;
     protected ParticleSystem _particle;
     protected SpriteRenderer _sprite;
     protected Rigidbody2D _rigidbody;
@@ -21,8 +21,7 @@ public class Asteroid : MonoBehaviour, IDestroyable
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (!other.gameObject.TryGetComponent<IDamageable>(out var damageable)) { return; }
-        var damage = _damageScale * _rigidbody.mass * _rigidbody.velocity.magnitude;
-        damageable.ApplyDamage(damage);
+        damageable.ApplyDamage(_damage);
     }
 
     private void Awake()

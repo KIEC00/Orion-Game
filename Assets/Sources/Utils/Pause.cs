@@ -10,12 +10,10 @@ public static class Pause
         if (isPause)
         {
             Time.timeScale = 0f;
-            EventBus.Invoke<IPauseHandler>(obj => obj.OnPause());
         }
         else
         {
             Time.timeScale = 1f;
-            EventBus.Invoke<IPauseHandler>(obj => obj.OnResume());
         }
     }
 }

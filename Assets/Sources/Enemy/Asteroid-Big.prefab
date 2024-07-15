@@ -73,6 +73,10 @@ PrefabInstance:
       value: Asteroid-Big
       objectReference: {fileID: 0}
     - target: {fileID: 8086810363067202111, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
+      propertyPath: _healthPoints
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8086810363067202111, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
       propertyPath: OnHealthOver.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6853731776013104485}
@@ -80,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: cdde17bc76c6ae14ea09821699e5a85a, type: 3}
+    - target: {fileID: 9076220127169047852, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2934733745835030703, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
     - {fileID: 234668270369503429, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
@@ -166,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e77ef7b0ba46e4fad0574e96143e77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damageScale: 0
-  _maxAsteroidCount: 3
+  _damage: 3
+  _maxAsteroidCount: 4
   _randomMinScale: 0.5
   _asteroid: {fileID: 2934733745835030703, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
