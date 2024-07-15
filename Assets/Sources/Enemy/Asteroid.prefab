@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2934733745835030703}
   - component: {fileID: 8086810363067202111}
   - component: {fileID: 2356218026297626512}
+  - component: {fileID: -6069396245166360309}
   - component: {fileID: 790360789085892930}
   - component: {fileID: 2107406051447194553}
   m_Layer: 7
@@ -78,7 +79,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 354680919
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7103532502ae2b84f8d6bffdc17a98b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -197,6 +198,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -6069396245166360309}
+        m_TargetAssemblyTypeName: AddingScore, Assembly-CSharp
+        m_MethodName: AddFixed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2356218026297626512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +222,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7da737bb6c701944db9b5e195e108ff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-6069396245166360309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3232381973210084046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d370b5eb027909c4ba57e8ef736aed0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fixedScore: 10
 --- !u!198 &790360789085892930
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5030,7 +5056,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 354680919
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 10
   m_RenderMode: 0
   m_MeshDistribution: 0

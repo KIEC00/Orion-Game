@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 5590271341737465511}
   - component: {fileID: 7955208315122296647}
   - component: {fileID: -4207706369464879285}
+  - component: {fileID: 310831757399585533}
   - component: {fileID: 104811754534164699}
   m_Layer: 7
   m_Name: Enemy-Spaceship
@@ -195,7 +196,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 354680919
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 66e2bee867275422c9de0a02da52d95b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -318,6 +319,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 310831757399585533}
+        m_TargetAssemblyTypeName: AddingScore, Assembly-CSharp
+        m_MethodName: AddFixed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &-4207706369464879285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -330,6 +343,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9cf5f22fdd964c44b1ad47737891953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &310831757399585533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078389808252538094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d370b5eb027909c4ba57e8ef736aed0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fixedScore: 100
 --- !u!95 &104811754534164699
 Animator:
   serializedVersion: 5
@@ -340,7 +366,7 @@ Animator:
   m_GameObject: {fileID: 4078389808252538094}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a204177872ff1ed4088237e7ce9b80f3, type: 2}
+  m_Controller: {fileID: 9100000, guid: cff2a6443d9d64f5a99bc31bae56d516, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -424,7 +450,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 872921745
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 3b99fb148173c724e9007e293c1a0177, type: 3}
   m_Color: {r: 1, g: 0.2627451, b: 0.2627451, a: 1}
@@ -613,7 +639,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 872921745
-  m_SortingLayer: 2
+  m_SortingLayer: 1
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 3b99fb148173c724e9007e293c1a0177, type: 3}
   m_Color: {r: 1, g: 0.2627451, b: 0.2627451, a: 1}

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6069396245166360309, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
+      propertyPath: _fixedScore
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 790360789085892930, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
       propertyPath: ShapeModule.radius.value
       value: 2
@@ -176,5 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 3
   _maxAsteroidCount: 4
-  _randomMinScale: 0.5
+  _scaleVariation: 0.5
   _asteroid: {fileID: 2934733745835030703, guid: e30c2e1cd0c1a5243b14d12fb084a98f, type: 3}
