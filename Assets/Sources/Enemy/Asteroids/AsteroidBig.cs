@@ -4,7 +4,7 @@ using UnityEngine;
 public class AsteroidBig : Asteroid
 {
     [SerializeField] protected int _maxAsteroidCount = 3;
-    [SerializeField] protected float _randomMinScale = 0.5f;
+    [SerializeField] protected float _scaleVariation = 0.5f;
     [SerializeField] private Asteroid _asteroid;
 
     public new void Destroy()
@@ -22,7 +22,7 @@ public class AsteroidBig : Asteroid
             var bounds = _sprite.bounds.size;
             var offset = new Vector2(Random.Range(-bounds.x / 2, bounds.x / 2), Random.Range(-bounds.y / 2, bounds.y / 2));
             var asteroid = Instantiate(_asteroid, transform.position + (Vector3)offset, Quaternion.identity);
-            var scale = Random.Range(_randomMinScale, 1f);
+            var scale = Random.Range(-_scaleVariation, _scaleVariation) + 1;
             var rigidbody = asteroid.GetComponent<Rigidbody2D>();
             asteroid.transform.localScale = Vector3.one * scale;
             rigidbody.velocity = velocity;

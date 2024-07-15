@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerVisual : MonoBehaviour
+public class PlayerVisual : MonoBehaviour, IDestroyable
 {
     [SerializeField] private Transform _engineFire;
     [SerializeField] private Vector2 _engineFireMinimumScale;
@@ -15,5 +15,10 @@ public class PlayerVisual : MonoBehaviour
     {
         GetComponent<Animator>().enabled = true;
         Destroy(_engineFire.gameObject);
+    }
+
+    public void Destroy()
+    {
+        transform.parent.GetComponent<IDestroyable>().Destroy();
     }
 }

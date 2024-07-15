@@ -2,11 +2,13 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Bootstrap : MonoBehaviour, IGameOverPrepareHandler, IGameOverHandler
+[DefaultExecutionOrder(-100)]
+public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameOverPrepareHandler, IGameOverHandler
 {
     [SerializeField] private float _fakeVelocity;
     [SerializeField] private PlayerControls _playerControls;
     [SerializeField] private Emitter _emitter;
+    [SerializeField] private Menu _menu;
 
     private PlayerActions _input;
 
@@ -21,42 +23,68 @@ public class Bootstrap : MonoBehaviour, IGameOverPrepareHandler, IGameOverHandle
         EventBus.Invoke<IGameFakeVelocityChangeHandler>(obj => obj.OnFakeVelocityChange(_fakeVelocity));
 
         _input = new PlayerActions();
-        // _input.UI.Menu += (ctx) => ; 
-        // StartLevel();
+        _input.UI.Menu.performed += (ctx) => {_menu.Open(Menu.Type.Pause); };
+
         var playerPosition = new Vector3(gameBounds.xMin - 2, gameBounds.center.y, 0);
         _playerControls.transform.position = playerPosition;
         DOTween.Sequence().SetEase(Ease.OutCubic)
             .Join(_playerControls.transform.DOMoveX(_playerControls.transform.position.x + 10, 1f))
-            .AppendCallback(StartLevel);
+            .AppendCallback(() => _menu.Open(Menu.Type.Start));
     }
 
-    private void StartLevel()
+    public void OnLevelStart()
     {
-        _input.UI.Enable();
-        _playerControls.enabled = true;
         _emitter.Run();
     }
 
     public void OnGameOverPrepare()
     {
-
+        DisableInput();
     }
 
     public void OnGameOver()
     {
+        _menu.Open(Menu.Type.GameOver);
+    }
 
+    private void EnableInput()
+    {
+        _input.UI.Enable();
+        _input.Enable();
+        _playerControls.enabled = true;
+    }
+
+    private void DisableInput()
+    {
+        _input.UI.Disable();
+        _playerControls.enabled = false;
+    }
+
+    public void OnMenuOpen()
+    {
+        DisableInput();
+    }
+
+    public void OnMenuClose()
+    {
+        EnableInput();
     }
 
     private void Start() { PrepareLevel(); }
 
     private void Awake()
     {
+        Pause.Set(false);
+        EventBus.AddListener<ILevelStartHandler>(this);
+        EventBus.AddListener<IMenuHandler>(this);
         EventBus.AddListener<IGameOverPrepareHandler>(this);
         EventBus.AddListener<IGameOverHandler>(this);
     }
 
     private void OnDestroy()
     {
+        EventBus.RemoveListener<ILevelStartHandler>(this);
+        EventBus.RemoveListener<IMenuHandler>(this);
         EventBus.RemoveListener<IGameOverPrepareHandler>(this);
         EventBus.RemoveListener<IGameOverHandler>(this);
     }
@@ -65,6 +93,4 @@ public class Bootstrap : MonoBehaviour, IGameOverPrepareHandler, IGameOverHandle
     {
         if (_playerControls == null) { _playerControls = FindObjectOfType<PlayerControls>(); }
     }
-
-
 }

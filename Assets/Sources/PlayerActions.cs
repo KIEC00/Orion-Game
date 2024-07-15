@@ -853,7 +853,7 @@ namespace UnityEngine.InputSystem
                     ""path"": ""*/{Menu}"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse;Joystick;Touch;Gamepad;XR"",
+                    ""groups"": ""Joystick;Touch;Gamepad;XR"",
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -864,7 +864,7 @@ namespace UnityEngine.InputSystem
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
