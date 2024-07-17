@@ -13,11 +13,8 @@ public class Damageable : MonoBehaviour, IDamageable
     public void ApplyDamage(float damage)
     {
         _healthPoints -= damage;
-        if (_healthPoints > 0f)
-        {
-            OnDamaged.Invoke();
-        }
-        else
+        OnDamaged.Invoke();
+        if (_healthPoints <= 0f)
         {
             _healthPoints = 0f;
             OnHealthOver.Invoke();

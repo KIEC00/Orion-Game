@@ -11,7 +11,6 @@ public class EnemySpaceship : MonoBehaviour, IDestroyable
     [SerializeField] Transform _engineVisual;
     [SerializeField] AbstractCannon _canon;
 
-
     private Rigidbody2D _rigidbody;
     private Transform _player;
 
@@ -34,6 +33,7 @@ public class EnemySpaceship : MonoBehaviour, IDestroyable
 
     public void Explode()
     {
+        _canon.enabled = false;
         _rigidbody.simulated = false;
         GetComponent<Animator>().enabled = true;
         Destroy(_engineVisual.gameObject);

@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 public class DefaultCannon : AbstractCannon
 {
@@ -10,9 +10,9 @@ public class DefaultCannon : AbstractCannon
     [SerializeField] private float _projectileDamage = 1;
     [SerializeField] private float _projectileVelocity = 10;
     [SerializeField] private float _shootDelay = 1;
-    [SerializeField] private Transform _pivot;
-
-    private Rigidbody2D _rigidbody;
+    [SerializeField] private Transform _spawnPivot;
+    [SerializeField] private SpriteRenderer _flash;
+    [SerializeField] private float _flashTime;
 
     private Coroutine _coroutine = null;
     private YieldInstruction _delayInstruction;
@@ -25,10 +25,7 @@ public class DefaultCannon : AbstractCannon
         _coroutine = StartCoroutine(ShootRoutine());
     }
 
-    public override void StopShoot()
-    {
-        _stopInvoked = true;
-    }
+    public override void StopShoot() => _stopInvoked = true;
 
     private IEnumerator ShootRoutine()
     {
@@ -42,14 +39,16 @@ public class DefaultCannon : AbstractCannon
 
     private void Shoot()
     {
-        var projectile = Instantiate(_projectile, _pivot.position, Quaternion.identity);
-        var projectileVelocity = (Vector2)_pivot.right * _projectileVelocity;
+        var projectile = Instantiate(_projectile, _spawnPivot.position, Quaternion.identity);
+        var projectileVelocity = (Vector2)_spawnPivot.right * _projectileVelocity;
+        _flash.DOKill();
+        _flash.DOFade(0f, _flashTime).ChangeStartValue(_flash.color + Color.black).SetEase(Ease.OutCubic);
         projectile.Init(projectileVelocity, _projectileDamage);
     }
 
-    private void Awake()
-    {
-        _delayInstruction = new WaitForSeconds(_shootDelay);
-        _rigidbody = GetComponentInParent<Rigidbody2D>();
-    }
+    private void Awake() => _delayInstruction = new WaitForSeconds(_shootDelay);
+
+    private void OnDisable() => StopShoot();
+
+    private void OnDestroy() => _flash.DOKill();
 }

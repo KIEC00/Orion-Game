@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &7965455824847359913
+--- !u!1001 &4357150343494876085
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3023345282782761179, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023345282782761179, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3023345282782761179, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,56 +58,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4810266472674108611, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Radius
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5323310470955615305, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
-      propertyPath: m_FlipX
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5323310470955615305, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Size.x
-      value: 0.48
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5323310470955615305, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Size.y
-      value: 0.32
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5323310470955615305, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 9687b8cba872c4f50aeb3b2b3ff1a0b7, type: 3}
+      objectReference: {fileID: 21300000, guid: 1bafe9d8b38ab4bf9ba9db099e4d7156, type: 3}
     - target: {fileID: 5323310470955615305, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5401449819998470567, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Name
-      value: Bolt
+      value: Crossed
       objectReference: {fileID: 0}
     - target: {fileID: 6034027128016363856, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 2216a07adddae4cf792492157b6ffa0e, type: 2}
+      objectReference: {fileID: 9100000, guid: 450afa5a704000b42aafc421f51fe6b8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5401449819998470567, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7282751331900591052}
+      addedObject: {fileID: -2518932159409915679}
   m_SourcePrefab: {fileID: 100100000, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
---- !u!1 &2629880222552198670 stripped
+--- !u!1 &8539520715674679826 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5401449819998470567, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
-  m_PrefabInstance: {fileID: 7965455824847359913}
+  m_PrefabInstance: {fileID: 4357150343494876085}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7282751331900591052
+--- !u!114 &-2518932159409915679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2629880222552198670}
+  m_GameObject: {fileID: 8539520715674679826}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}

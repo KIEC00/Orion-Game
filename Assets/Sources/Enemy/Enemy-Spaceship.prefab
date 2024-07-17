@@ -286,7 +286,7 @@ MonoBehaviour:
   _velocity: 10
   _angularVelocity: 45
   _collisionDamage: 1
-  _engineVisual: {fileID: 7583250640066100248}
+  _engineVisual: {fileID: 2040332907041700137}
   _canon: {fileID: 4533892819898802271}
 --- !u!114 &7955208315122296647
 MonoBehaviour:
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d370b5eb027909c4ba57e8ef736aed0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fixedScore: 100
+  _fixedScore: 50
 --- !u!95 &104811754534164699
 Animator:
   serializedVersion: 5
@@ -769,7 +769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 176932459348863458, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 176932459348863458, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: m_LocalPosition.z
@@ -805,7 +805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 255241456379769213, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.5
+      value: -1.25
       objectReference: {fileID: 0}
     - target: {fileID: 255241456379769213, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -823,6 +823,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cannon
       objectReference: {fileID: 0}
+    - target: {fileID: 5973792324002217942, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5973792324002217942, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7370417721098735410, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: _projectile
       value: 
@@ -839,6 +847,30 @@ PrefabInstance:
       propertyPath: _projectileVelocity
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729256198039460397, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 4fbe47a9ad8445941b183c8df130389c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
