@@ -11,3 +11,5 @@ public interface IMenuHandler { void OnMenuOpen(); void OnMenuClose(); }
 
 public interface IGameOverPrepareHandler { void OnGameOverPrepare(); }
 public interface IGameOverHandler { void OnGameOver(); }
+
+public interface IRestartHandler { void OnRestart(); }

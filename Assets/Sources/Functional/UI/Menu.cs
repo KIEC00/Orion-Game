@@ -74,7 +74,7 @@ public class Menu : MonoBehaviour
 
     private void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        EventBus.Invoke<IRestartHandler>(obj => obj.OnRestart());
     }
 
     public enum Type { Start, Pause, GameOver }

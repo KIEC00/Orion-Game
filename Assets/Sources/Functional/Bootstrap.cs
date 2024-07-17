@@ -1,9 +1,10 @@
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-100)]
-public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameOverPrepareHandler, IGameOverHandler
+public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameOverPrepareHandler, IGameOverHandler, IRestartHandler
 {
     [SerializeField] private float _fakeVelocity;
     [SerializeField] private PlayerControls _playerControls;
@@ -11,6 +12,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
     [SerializeField] private Menu _menu;
 
     private PlayerActions _input;
+    private static bool _isFirstStart = true;
 
     private void PrepareLevel()
     {
@@ -23,13 +25,22 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
         EventBus.Invoke<IGameFakeVelocityChangeHandler>(obj => obj.OnFakeVelocityChange(_fakeVelocity));
 
         _input = new PlayerActions();
-        _input.UI.Menu.performed += (ctx) => {_menu.Open(Menu.Type.Pause); };
+        _input.UI.Menu.performed += (ctx) => { _menu.Open(Menu.Type.Pause); };
+
+        SceneTransition.Instance.InstantShow();
+        SceneTransition.Instance.Hide();
 
         var playerPosition = new Vector3(gameBounds.xMin - 2, gameBounds.center.y, 0);
         _playerControls.transform.position = playerPosition;
         DOTween.Sequence().SetEase(Ease.OutCubic)
             .Join(_playerControls.transform.DOMoveX(_playerControls.transform.position.x + 10, 1f))
-            .AppendCallback(() => _menu.Open(Menu.Type.Start));
+            .AppendCallback(OnLevelReady);
+    }
+
+    private void OnLevelReady()
+    {
+        if (_isFirstStart) { _menu.Open(Menu.Type.Start); _isFirstStart = false; }
+        else { EnableInput(); OnLevelStart(); }
     }
 
     public void OnLevelStart()
@@ -70,6 +81,11 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
         EnableInput();
     }
 
+    public void OnRestart()
+    {
+        SceneTransition.Instance.Show(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
+    }
+
     private void Start() { PrepareLevel(); }
 
     private void Awake()
@@ -79,6 +95,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
         EventBus.AddListener<IMenuHandler>(this);
         EventBus.AddListener<IGameOverPrepareHandler>(this);
         EventBus.AddListener<IGameOverHandler>(this);
+        EventBus.AddListener<IRestartHandler>(this);
     }
 
     private void OnDestroy()
@@ -87,6 +104,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
         EventBus.RemoveListener<IMenuHandler>(this);
         EventBus.RemoveListener<IGameOverPrepareHandler>(this);
         EventBus.RemoveListener<IGameOverHandler>(this);
+        EventBus.RemoveListener<IRestartHandler>(this);
     }
 
     private void OnValidate()
