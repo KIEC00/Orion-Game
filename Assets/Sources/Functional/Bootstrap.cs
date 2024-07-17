@@ -1,3 +1,5 @@
+using System;
+using System.Data.SqlTypes;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +12,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
     [SerializeField] private PlayerControls _playerControls;
     [SerializeField] private Emitter _emitter;
     [SerializeField] private Menu _menu;
+    [SerializeField] private ScoreCounter _scoreCounter;
 
     private PlayerActions _input;
     private static bool _isFirstStart = true;
@@ -40,7 +43,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
     private void OnLevelReady()
     {
         if (_isFirstStart) { _menu.Open(Menu.Type.Start); _isFirstStart = false; }
-        else { EnableInput(); OnLevelStart(); }
+        else { EnableInput(); EventBus.Invoke<ILevelStartHandler>(obj => obj.OnLevelStart()); }
     }
 
     public void OnLevelStart()
@@ -55,6 +58,7 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
 
     public void OnGameOver()
     {
+        Storage.HighScore = Math.Max(_scoreCounter.Score, Storage.HighScore);
         _menu.Open(Menu.Type.GameOver);
     }
 

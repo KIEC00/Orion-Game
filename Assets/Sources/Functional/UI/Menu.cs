@@ -1,44 +1,53 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _group;
     [SerializeField] private Image _topPanel;
+    [SerializeField] private TextMeshProUGUI _highScore;
     [SerializeField] private TextMeshProUGUI _mainText;
     [SerializeField] private Image _bottomPanel;
-    [SerializeField] private Button _button;
+    [SerializeField] private Button _quitButton;
+    [SerializeField] private Button _startButton;
     [Space]
     [SerializeField] private float _fade;
     [SerializeField] private float _translate;
     [SerializeField] private float _translateExtraOffset;
+    [Space]
+    [SerializeField] private Color _startColor;
+    [SerializeField] private Color _pauseColor;
+    [SerializeField] private Color _gameOverColor;
 
     public void Open(Type type)
     {
-        var buttonText = _button.GetComponentInChildren<TextMeshProUGUI>();
+        var buttonText = _startButton.GetComponentInChildren<TextMeshProUGUI>();
         switch (type)
         {
             case Type.Start:
+                _mainText.color = _startColor;
                 _mainText.text = "Orion";
                 buttonText.text = "Start";
-                _button.onClick.AddListener(StartGame);
+                _startButton.onClick.AddListener(StartGame);
                 break;
             case Type.Pause:
+                _mainText.color = _pauseColor;
                 _mainText.text = "Pause";
                 buttonText.text = "Resume";
-                _button.onClick.AddListener(Close);
+                _startButton.onClick.AddListener(Close);
                 break;
             case Type.GameOver:
+                _mainText.color = _gameOverColor;
                 _mainText.text = "Game Over";
                 buttonText.text = "Restart";
-                _button.onClick.AddListener(RestartGame);
+                _startButton.onClick.AddListener(RestartGame);
                 break;
         }
         Pause.Set(true);
         EventBus.Invoke<IMenuHandler>(obj => obj.OnMenuOpen());
+        _highScore.text = $"HS {Storage.HighScore:d6}";
         _group.alpha = 0f;
         _topPanel.rectTransform.anchoredPosition = new Vector2(0, _topPanel.rectTransform.sizeDelta.y + _translateExtraOffset);
         _bottomPanel.rectTransform.anchoredPosition = new Vector2(0, -_bottomPanel.rectTransform.sizeDelta.y - _translateExtraOffset);
@@ -52,7 +61,7 @@ public class Menu : MonoBehaviour
 
     public void Close()
     {
-        _button.onClick.RemoveAllListeners();
+        _startButton.onClick.RemoveAllListeners();
         _group.interactable = false;
         DOTween.Sequence().SetEase(Ease.InOutCubic).SetUpdate(true)
             .Join(_topPanel.rectTransform.DOAnchorPosY(_topPanel.rectTransform.sizeDelta.y + _translateExtraOffset, _translate))
@@ -76,6 +85,8 @@ public class Menu : MonoBehaviour
     {
         EventBus.Invoke<IRestartHandler>(obj => obj.OnRestart());
     }
+
+    private void Awake() => _quitButton.onClick.AddListener(() => Application.Quit());
 
     public enum Type { Start, Pause, GameOver }
 }
