@@ -837,7 +837,7 @@ PrefabInstance:
       objectReference: {fileID: 6166775120955602649, guid: 748fb25359729d44986959021467e640, type: 3}
     - target: {fileID: 7370417721098735410, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: _shootDelay
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7370417721098735410, guid: 812d3985a426a8343987ed5fdcb65f4e, type: 3}
       propertyPath: _projectileDamage

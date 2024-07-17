@@ -13,6 +13,8 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
     [Space]
     [SerializeField] private float _minimalDistanceNormalized = 0.1f;
     [SerializeField] private float _spawnOffset;
+    [Space]
+    [SerializeField] private int _addPointInterval;
 
     private Vector2 _anchor;
     private float _amplitude;
@@ -31,6 +33,15 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
                 Spawn(target);
                 yield return new WaitForSeconds(Random.Range(interval.from, interval.to));
             }
+        }
+    }
+
+    private IEnumerator AddPointRoutine(YieldInstruction instruction)
+    {
+        while (true)
+        {
+            yield return instruction;
+            EventBus.Invoke<IScoreAddHandler>(obj => obj.OnScoreAdd(1));
         }
     }
 
@@ -78,7 +89,12 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
         throw new Exception("Something went wrong at selecting target");
     }
 
-    public void Run() => StartCoroutine(SpawnRoutine());
+    public void Run()
+    {
+        StartCoroutine(SpawnRoutine());
+        StartCoroutine(AddPointRoutine(new WaitForSeconds(_addPointInterval)));
+    }
+
     public void OnFakeVelocityChange(float velocity) => _velocity = velocity;
     public void OnGameBoundsChange(Rect bounds)
     {

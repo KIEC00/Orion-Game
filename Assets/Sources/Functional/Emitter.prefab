@@ -50,3 +50,4 @@ MonoBehaviour:
   _scaleVariation: 0.2
   _minimalDistanceNormalized: 0.3
   _spawnOffset: 3
+  _addPointInterval: 1
