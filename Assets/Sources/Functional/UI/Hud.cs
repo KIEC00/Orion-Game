@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Hud : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI _field;
+    [SerializeField] TextMeshProUGUI _stageField;
+    [SerializeField] TextMeshProUGUI _scoreField;
 
-    public void UpdateScore(int score)
-    {
-        _field.text = $"{score:d6}";
-    }
+    public void UpdateStage(string stageName) => _stageField.text = $"Stage {stageName}";
+    public void UpdateScore(int score) => _scoreField.text = $"{score:d6}";
 }

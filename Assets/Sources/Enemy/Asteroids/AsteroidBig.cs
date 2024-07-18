@@ -20,11 +20,12 @@ public class AsteroidBig : Asteroid
         for (var i = 0; i < count; i++)
         {
             var bounds = _sprite.bounds.size;
-            var offset = new Vector2(Random.Range(-bounds.x / 2, bounds.x / 2), Random.Range(-bounds.y / 2, bounds.y / 2));
-            var asteroid = Instantiate(_asteroid, transform.position + (Vector3)offset, Quaternion.identity);
             var scale = Random.Range(-_scaleVariation, _scaleVariation) + 1;
+            var asteroid = Instantiate(_asteroid, transform.position, Quaternion.identity);
             var rigidbody = asteroid.GetComponent<Rigidbody2D>();
             asteroid.transform.localScale = Vector3.one * scale;
+            var maxOffsetAmplitude = (bounds - asteroid.Bounds.size) / 2;
+            asteroid.transform.Translate(Random.Range(-maxOffsetAmplitude.x, maxOffsetAmplitude.x), Random.Range(-maxOffsetAmplitude.y, maxOffsetAmplitude.y), 0);
             rigidbody.velocity = velocity;
             rigidbody.rotation = Random.Range(0f, 359f);
         }

@@ -6,6 +6,7 @@ public class EmitterStage
 {
     public int Total => targets.Sum(target => target.count);
     public bool isInfinite = false;
+    public string stageName = "";
     public Interval interval;
     public ObjectCount[] targets;
 

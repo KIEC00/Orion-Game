@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocityChangeHandler
@@ -15,6 +16,7 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
     [SerializeField] private float _spawnOffset;
     [Space]
     [SerializeField] private int _addPointInterval;
+    [SerializeField] private UnityEvent<string> OnStageUpdate;
 
     private Vector2 _anchor;
     private float _amplitude;
@@ -23,9 +25,11 @@ public class Emitter : MonoBehaviour, IGameBoundsChangeHandler, IGameFakeVelocit
 
     private IEnumerator SpawnRoutine()
     {
-        foreach (var stage in _stages)
+        for (var i = 0; i < _stages.Length; i++)
         {
+            var stage = _stages[i];
             var interval = stage.interval;
+            OnStageUpdate.Invoke(stage.stageName != "" ? stage.stageName : (i + 1).ToString());
             while (true)
             {
                 var target = SelectTarget(stage);

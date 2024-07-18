@@ -5,6 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class Asteroid : MonoBehaviour, IDestroyable
 {
+    public Bounds Bounds => _sprite.bounds;
+
     [SerializeField] protected float _damage;
     protected ParticleSystem _particle;
     protected SpriteRenderer _sprite;
