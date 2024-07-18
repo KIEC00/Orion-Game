@@ -1,11 +1,13 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class DefaultCannon : AbstractCannon
 {
     public override bool IsShooting => _coroutine != null;
 
+    [SerializeField] private UnityEvent OnShoot;
     [SerializeField] private Projectile _projectile;
     [SerializeField] private float _projectileDamage = 1;
     [SerializeField] private float _projectileVelocity = 10;

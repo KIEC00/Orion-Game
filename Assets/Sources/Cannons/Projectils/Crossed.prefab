@@ -8,6 +8,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2554170361058896805, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: _clips.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2554170361058896805, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: _clips.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9673a018b4a5ff841ad31e9db3322481, type: 3}
+    - target: {fileID: 2554170361058896805, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: _clips.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9919cdb956248bf43a019dbd6d269266, type: 3}
+    - target: {fileID: 2554170361058896805, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: _clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: 80f95e53d8d008349acdf0a410c44c1e, type: 3}
+    - target: {fileID: 2554170361058896805, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
+      propertyPath: _clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 28f680fedbbf9ff47b567c6f07dc62ff, type: 3}
     - target: {fileID: 3023345282782761179, guid: 981f2a7c87722f24b9042b35fea03ae5, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.5
