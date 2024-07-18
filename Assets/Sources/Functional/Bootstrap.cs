@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-[DefaultExecutionOrder(-100)]
 public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameOverPrepareHandler, IGameOverHandler, IRestartHandler
 {
     [SerializeField] private float _fakeVelocity;
@@ -12,16 +11,14 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
     [SerializeField] private Emitter _emitter;
     [SerializeField] private Menu _menu;
     [SerializeField] private ScoreCounter _scoreCounter;
+    [SerializeField] private ScreenSizeObserver _screenSizeObserver;
 
     private PlayerActions _input;
     private static bool _isFirstStart = true;
 
     private void PrepareLevel()
     {
-        var camera = Camera.main;
-        var cameraHeight = camera.orthographicSize * 2;
-        var cameraSize = new Vector2(camera.aspect * cameraHeight, cameraHeight);
-        var gameBounds = new Rect((Vector2)camera.transform.position - cameraSize / 2, cameraSize);
+        var gameBounds = _screenSizeObserver.GameBounds;
 
         EventBus.Invoke<IGameBoundsChangeHandler>(obj => obj.OnGameBoundsChange(gameBounds));
         EventBus.Invoke<IGameFakeVelocityChangeHandler>(obj => obj.OnFakeVelocityChange(_fakeVelocity));
@@ -74,20 +71,9 @@ public class Bootstrap : MonoBehaviour, ILevelStartHandler, IMenuHandler, IGameO
         _playerControls.enabled = false;
     }
 
-    public void OnMenuOpen()
-    {
-        DisableInput();
-    }
-
-    public void OnMenuClose()
-    {
-        EnableInput();
-    }
-
-    public void OnRestart()
-    {
-        SceneTransition.Instance.Show(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
-    }
+    public void OnMenuOpen() => DisableInput();
+    public void OnMenuClose() => EnableInput();
+    public void OnRestart() => SceneTransition.Instance.Show(() => SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex));
 
     private void Start() { PrepareLevel(); }
 

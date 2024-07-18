@@ -50,6 +50,10 @@ public class PlayerMovement : MonoBehaviour, IGameBoundsChangeHandler
     public void OnGameBoundsChange(Rect bounds)
     {
         _bounds = bounds;
+        var updatedPosition = _rigidbody.position;
+        if (_shipBounds.xMin < _bounds.xMin) { updatedPosition.x += _bounds.xMin - _shipBounds.xMin; }
+        else if (_shipBounds.xMax > _bounds.xMax) { updatedPosition.x += _bounds.xMax - _shipBounds.xMax; }
+        _rigidbody.position = updatedPosition;
     }
 
     public void Explode()
