@@ -31,11 +31,15 @@ public class AudioControl : MonoBehaviour
         set => SetValue(SoundKey, value);
     }
 
-    public void Awake()
+    private void Awake()
     {
         if (Instance) { Destroy(gameObject); return; }
         DontDestroyOnLoad(this);
         Instance = this;
+    }
+
+    private void Start()
+    {
         Music = Music;
         Sound = Sound;
         DOVirtual.Float(0f, 1f, _fadeInTime, (value) => _audioMixer.SetFloat(MasterKey, ConvertVolume(value)));

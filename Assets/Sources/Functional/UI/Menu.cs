@@ -7,6 +7,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField] private CanvasGroup _group;
     [SerializeField] private Image _topPanel;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField] private Slider _soundSlider;
     [SerializeField] private TextMeshProUGUI _highScore;
     [SerializeField] private TextMeshProUGUI _mainText;
     [SerializeField] private Image _bottomPanel;
@@ -86,7 +88,14 @@ public class Menu : MonoBehaviour
         EventBus.Invoke<IRestartHandler>(obj => obj.OnRestart());
     }
 
-    private void Awake() => _quitButton.onClick.AddListener(() => Application.Quit());
+    private void Awake()
+    {
+        _musicSlider.value = AudioControl.Instance.Music;
+        _musicSlider.onValueChanged.AddListener((value) => AudioControl.Instance.Music = value);
+        _soundSlider.value = AudioControl.Instance.Sound;
+        _soundSlider.onValueChanged.AddListener((value) => AudioControl.Instance.Sound = value);
+        _quitButton.onClick.AddListener(() => Application.Quit());
+    }
 
     public enum Type { Start, Pause, GameOver }
 }
