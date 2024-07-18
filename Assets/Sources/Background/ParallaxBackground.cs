@@ -9,7 +9,7 @@ public class ParallaxBackground : MonoBehaviour, IGameFakeVelocityChangeHandler,
     {
         foreach (var parallax in _parallaxes)
         {
-            parallax.MoveScale(_velocity * Time.deltaTime);
+            parallax.MoveScale(_velocity *  Time.deltaTime);
         }
     }
 

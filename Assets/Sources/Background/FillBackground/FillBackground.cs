@@ -10,10 +10,10 @@ public class FillBackground : ParallaxBackgroundComponent
     protected override void Move(float delta)
     {
         var current = _renderers[_current];
-        foreach (var (anchor, _) in _renderers) { anchor.localPosition -= new Vector3(delta, 0, 0); }
+        foreach (var (anchor, _) in _renderers) { anchor.Translate(-delta, 0, 0); }
         if (current.anchor.localPosition.x < -current.width)
         {
-            current.anchor.localPosition += new Vector3(_totalWidth, 0, 0);
+            current.anchor.Translate(_totalWidth, 0, 0);
             _current = (_current + 1) % _renderers.Length;
         }
     }

@@ -153,6 +153,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1746446787}
+  - {fileID: 434553903}
+  - {fileID: 1860345185}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &221172981
@@ -264,6 +266,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 456460984758ec24ca2fbf3a3738c5c9, type: 3}
+--- !u!1 &434553902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 434553903}
+  - component: {fileID: 434553904}
+  m_Layer: 0
+  m_Name: Planets-Far
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &434553903
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434553902}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 221172980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &434553904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434553902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25839cc918170a418a8720222d1b989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxScale: 0.45
+  _rangeDistanceBetweenPlanets: {x: 20, y: 40}
+  _scaleRange: {x: 0.2, y: 0.5}
+  _renderOrder: 1
+  _sprites:
+  - {fileID: 21300000, guid: f8ceb9611a03f0142baa32bc6598aa23, type: 3}
+  - {fileID: 21300000, guid: 6cedaa198a8a8b841ac16755c21f5083, type: 3}
+  - {fileID: 21300000, guid: 0bb57db3fef875f489f1fb4ca9c3c917, type: 3}
+  - {fileID: 21300000, guid: ff5d7c060526f0d4f8e7741b8bc4618d, type: 3}
+  - {fileID: 21300000, guid: f3d24e1053b171b4ca446ebe7cea1f1a, type: 3}
+  - {fileID: 21300000, guid: e0f7a08b9e88e48409aef4789d9a8b5e, type: 3}
+  - {fileID: 21300000, guid: bcba5cbd632abeb4e811b0d475bbd61e, type: 3}
+  - {fileID: 21300000, guid: 5008fe1c015b42947a437692188af012, type: 3}
+  - {fileID: 21300000, guid: c945f1f5965a1a444989dd045e276558, type: 3}
+  - {fileID: 21300000, guid: dfc1594b589d1f743a7c5fb04ee51fd8, type: 3}
+  _prefab: {fileID: 7693241301551477, guid: 2ac61a7356bf4a348bfce068d6467840, type: 3}
 --- !u!1 &456658560
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +640,67 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442f0f6e416164a49bd436867be0b60f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxScale: 0.5
+  _parallaxScale: 0.3
+--- !u!1 &1860345184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1860345185}
+  - component: {fileID: 1860345186}
+  m_Layer: 0
+  m_Name: Planets-Close
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1860345185
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860345184}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 221172980}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1860345186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860345184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25839cc918170a418a8720222d1b989, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parallaxScale: 0.6
+  _rangeDistanceBetweenPlanets: {x: 30, y: 60}
+  _scaleRange: {x: 1, y: 2}
+  _renderOrder: 2
+  _sprites:
+  - {fileID: 21300000, guid: f8ceb9611a03f0142baa32bc6598aa23, type: 3}
+  - {fileID: 21300000, guid: 6cedaa198a8a8b841ac16755c21f5083, type: 3}
+  - {fileID: 21300000, guid: 0bb57db3fef875f489f1fb4ca9c3c917, type: 3}
+  - {fileID: 21300000, guid: ff5d7c060526f0d4f8e7741b8bc4618d, type: 3}
+  - {fileID: 21300000, guid: f3d24e1053b171b4ca446ebe7cea1f1a, type: 3}
+  - {fileID: 21300000, guid: e0f7a08b9e88e48409aef4789d9a8b5e, type: 3}
+  - {fileID: 21300000, guid: bcba5cbd632abeb4e811b0d475bbd61e, type: 3}
+  - {fileID: 21300000, guid: 5008fe1c015b42947a437692188af012, type: 3}
+  - {fileID: 21300000, guid: c945f1f5965a1a444989dd045e276558, type: 3}
+  - {fileID: 21300000, guid: dfc1594b589d1f743a7c5fb04ee51fd8, type: 3}
+  _prefab: {fileID: 7693241301551477, guid: 2ac61a7356bf4a348bfce068d6467840, type: 3}
 --- !u!1001 &70505666393405159
 PrefabInstance:
   m_ObjectHideFlags: 0
