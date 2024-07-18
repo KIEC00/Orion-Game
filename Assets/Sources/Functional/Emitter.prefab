@@ -51,3 +51,6 @@ MonoBehaviour:
   _minimalDistanceNormalized: 0.3
   _spawnOffset: 3
   _addPointInterval: 1
+  OnStageUpdate:
+    m_PersistentCalls:
+      m_Calls: []
